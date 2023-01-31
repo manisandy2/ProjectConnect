@@ -2,6 +2,11 @@ from django.contrib import admin
 from .models import *
 from import_export.admin import ImportExportModelAdmin
 
+class StatusAdmin(ImportExportModelAdmin):
+    pass
+
+
+admin.site.register(Status, StatusAdmin)
 
 class StatusManagementAdmin(ImportExportModelAdmin):
     pass
@@ -20,11 +25,11 @@ admin.site.register(MaterialManagement, MaterialManagementAdmin)
 ########################################################################################################################
 
 
-class LightTypeListAdmin(ImportExportModelAdmin):
+class LightManagementAdmin(ImportExportModelAdmin):
     pass
 
 
-admin.site.register(LightTypeList, LightTypeListAdmin)
+admin.site.register(LightManagement, LightManagementAdmin)
 ########################################################################################################################
 
 
@@ -36,6 +41,19 @@ admin.site.register(BrandLocation, BrandLocationAdmin)
 
 ########################################################################################################################
 
+class VendorManagementAdmin(ImportExportModelAdmin):
+    pass
+
+
+admin.site.register(VendorManagement, VendorManagementAdmin)
+
+########################################################################################################################
+class BrandTypeManagementAdmin(ImportExportModelAdmin):
+    pass
+
+
+admin.site.register(BrandTypeManagement, BrandTypeManagementAdmin)
+########################################################################################################################
 
 class BrandManagementAdmin(ImportExportModelAdmin):
     pass
@@ -44,7 +62,12 @@ class BrandManagementAdmin(ImportExportModelAdmin):
 admin.site.register(BrandManagement, BrandManagementAdmin)
 
 ########################################################################################################################
+class ClassManagementAdmin(ImportExportModelAdmin):
+    pass
 
+
+admin.site.register(ClassManagement, ClassManagementAdmin)
+########################################################################################################################
 
 class GradeAdmin(ImportExportModelAdmin):
     pass
@@ -63,9 +86,15 @@ admin.site.register(ImageManagement, ImageManagementAdmin)
 ########################################################################################################################
 
 
-class FloorManagementAdmin(ImportExportModelAdmin):
+class FloorDiagramManagementAdmin(ImportExportModelAdmin):
     pass
 
 
-admin.site.register(FloorManagement, FloorManagementAdmin)
+admin.site.register(FloorDiagramManagement, FloorDiagramManagementAdmin)
+########################################################################################################################
+class AssetManagementAdmin(ImportExportModelAdmin):
+    pass
+
+
+admin.site.register(AssetManagement, AssetManagementAdmin)
 ########################################################################################################################

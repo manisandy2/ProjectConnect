@@ -78,4 +78,17 @@ class ShowroomDetail(models.Model):
 
     def __str__(self):
         return self.name
+########################################################################################################################
 
+
+class Store(models.Model):
+    name = models.CharField(max_length=120)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = "Store"
+        verbose_name_plural = "Store"
+
+########################################################################################################################
