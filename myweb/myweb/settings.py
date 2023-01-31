@@ -40,7 +40,8 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
-    "apps.showroom"
+    "apps.showroom",
+    "apps.Asset"
 
 ]
 
