@@ -6,7 +6,7 @@ class StatusManagement(models.Model):
     name = models.CharField(max_length=120)
 
     def __str__(self):
-        return self.name
+        return "{}".format(self.name)
 
     class Meta:
         db_table = "Status"
@@ -20,7 +20,7 @@ class LightTypeList(models.Model):
     status = models.ForeignKey(to=StatusManagement, null=True,blank=True,on_delete=models.SET_NULL)
 
     def __str__(self):
-        return self.name
+        return "Name : {},  Status : {} ".format(self.name,self.status)
 
     class Meta:
         db_table = "Light Type List"
@@ -34,7 +34,7 @@ class MaterialManagement(models.Model):
     status = models.ForeignKey(to=StatusManagement, null=True,blank=True,on_delete=models.SET_NULL)
 
     def __str__(self):
-        return self.name
+        return "Name : {},  Status : {} ".format(self.name,self.status)
 
     class Meta:
         db_table = "Material Type List"
@@ -45,14 +45,28 @@ class MaterialManagement(models.Model):
 
 class BrandLocation(models.Model):
     name = models.CharField(max_length=120)
-    status = models.ForeignKey(to=StatusManagement, null=True,blank=True,on_delete=models.SET_NULL)
+    status = models.ForeignKey(to=StatusManagement, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return self.name
+        return "Name : {},  Status : {} ".format(self.name, self.status)
 
     class Meta:
         db_table = "Brand Type List"
         verbose_name_plural = "Brand Type List"
+
+########################################################################################################################
+
+
+class BrandManagement(models.Model):
+    name = models.CharField(max_length=120)
+    status = models.ForeignKey(to=StatusManagement, null=True, blank=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return "Name : {},  Status : {} ".format(self.name, self.status)
+
+    class Meta:
+        db_table = "Brand"
+        verbose_name_plural = "Brand"
 
 ########################################################################################################################
 
