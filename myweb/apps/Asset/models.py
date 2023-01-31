@@ -1,6 +1,7 @@
 from django.db import models
 from apps.showroom.models import ShowroomDetail
 
+
 class StatusManagement(models.Model):
     name = models.CharField(max_length=120)
 
@@ -16,7 +17,7 @@ class StatusManagement(models.Model):
 
 class LightTypeList(models.Model):
     name = models.CharField(max_length=120)
-    status = models.ForeignKey(to=StatusManagement, on_delete=models.CASCADE)
+    status = models.ForeignKey(to=StatusManagement, null=True,blank=True,on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name
@@ -27,9 +28,10 @@ class LightTypeList(models.Model):
 
 ########################################################################################################################
 
+
 class MaterialManagement(models.Model):
     name = models.CharField(max_length=120)
-    status = models.ForeignKey(to=StatusManagement, on_delete=models.CASCADE)
+    status = models.ForeignKey(to=StatusManagement, null=True,blank=True,on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name
@@ -40,9 +42,10 @@ class MaterialManagement(models.Model):
 
 ########################################################################################################################
 
+
 class BrandLocation(models.Model):
     name = models.CharField(max_length=120)
-    status = models.ForeignKey(to=StatusManagement, on_delete=models.CASCADE)
+    status = models.ForeignKey(to=StatusManagement, null=True,blank=True,on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name
@@ -53,9 +56,10 @@ class BrandLocation(models.Model):
 
 ########################################################################################################################
 
+
 class ClassManagement(models.Model):
     name = models.CharField(max_length=120)
-    status = models.ForeignKey(to=StatusManagement, on_delete=models.CASCADE)
+    status = models.ForeignKey(to=StatusManagement, null=True,blank=True,on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name
@@ -65,9 +69,11 @@ class ClassManagement(models.Model):
         verbose_name_plural = "Class Management"
 
 ########################################################################################################################
+
+
 class Grade(models.Model):
     name = models.CharField(max_length=120)
-    status = models.ForeignKey(to=StatusManagement, on_delete=models.CASCADE)
+    status = models.ForeignKey(to=StatusManagement, null=True,blank=True,on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name
@@ -77,9 +83,10 @@ class Grade(models.Model):
         verbose_name_plural = "Grade"
 ########################################################################################################################
 
+
 class ImageManagement(models.Model):
     name = models.CharField(max_length=120)
-    status = models.ForeignKey(to=StatusManagement, on_delete=models.CASCADE)
+    status = models.ForeignKey(to=StatusManagement, null=True,blank=True,on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name
@@ -89,8 +96,9 @@ class ImageManagement(models.Model):
         verbose_name_plural = "360 Degree Image Management"
 ########################################################################################################################
 
+
 class FloorManagement(models.Model):
-    ShowroomLocation = models.ForeignKey(to=ShowroomDetail,on_delete=models.CASCADE)
+    ShowroomLocation = models.ForeignKey(to=ShowroomDetail, null=True,blank=True,on_delete=models.SET_NULL)
     FloorDiagram = models.ImageField()
 
 

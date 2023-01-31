@@ -66,14 +66,14 @@ class State(models.Model):
 
 class ShowroomDetail(models.Model):
     name = models.CharField(max_length=120)
-    RSM = models.OneToOneField(to=RSM,on_delete=models.CASCADE)
-    ASM = models.OneToOneField(to=ASM,on_delete=models.CASCADE)
-    Manager = models.OneToOneField(to=Manager,on_delete=models.CASCADE)
+    RSM = models.ForeignKey(to=RSM,null=True,blank=True,on_delete=models.SET_NULL)
+    ASM = models.ForeignKey(to=ASM, null=True,blank=True ,on_delete=models.SET_NULL)
+    Manager = models.ForeignKey(to=Manager, null=True,blank=True ,on_delete=models.SET_NULL)
     CUG_NO = models.CharField(max_length=120)
     Landline = models.CharField(max_length=120)
     E_Mail = models.CharField(max_length=120)
-    Region = models.OneToOneField(to=Region,on_delete=models.CASCADE)
-    State = models.OneToOneField(to=State,on_delete=models.CASCADE)
+    Region = models.ForeignKey(to=Region, null=True,blank=True,on_delete=models.SET_NULL)
+    State = models.ForeignKey(to=State, null=True,blank=True,on_delete=models.SET_NULL)
     Address = models.CharField(max_length=120)
 
     def __str__(self):
