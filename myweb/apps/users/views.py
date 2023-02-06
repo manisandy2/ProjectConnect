@@ -1,3 +1,4 @@
+from PIL.ImageWin import HDC
 from django.contrib.auth.models import User
 from rest_framework import generics
 from .serializers import UserSerializer
@@ -5,6 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.response import Response
 from django.http import HttpResponse
+from django.shortcuts import redirect
 import jwt
 import datetime
 from rest_framework_simplejwt.tokens import AccessToken,RefreshToken
@@ -42,4 +44,4 @@ class LoginView(APIView):
         #     "Message": "Success",
         #     "Access":AccessToken.for_user(User)
         # })
-        return HttpResponse(RefreshToken.for_user(User))
+        return HttpResponse("Login success full")
