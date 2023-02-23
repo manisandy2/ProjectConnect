@@ -8,7 +8,6 @@ __pycache__/
 *$py.class
 
 frontend/
-Backend/
 Andriod/
 # C extensions
 *.so
