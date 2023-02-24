@@ -51,6 +51,7 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'import_export',
     'rest_framework_simplejwt',
+    'rest_framework.authtoken',
     "corsheaders",
     'djoser',
 ]
@@ -66,7 +67,12 @@ REST_FRAMEWORK = {
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
+
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('JWT',),
 }
 
 

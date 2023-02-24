@@ -12,6 +12,9 @@ import datetime
 import json
 from rest_framework_simplejwt.tokens import AccessToken,RefreshToken
 from rest_framework import status
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.permissions import AllowAny
+from .serializers import MyTokenObtainPairSerializer
 
 
 class UserList(generics.ListAPIView):
@@ -22,6 +25,11 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+class MyObtainTokenPairView(TokenObtainPairView):
+    permission_classes = (AllowAny,)
+    serializer_class = MyTokenObtainPairSerializer
 
 
 class LoginView(APIView):
