@@ -14,7 +14,9 @@ from rest_framework_simplejwt.tokens import AccessToken,RefreshToken
 from rest_framework import status
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import AllowAny
-from .serializers import MyTokenObtainPairSerializer
+from django.contrib.auth import get_user_model
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 
 
 class UserList(generics.ListAPIView):
@@ -27,30 +29,7 @@ class UserDetail(generics.RetrieveAPIView):
     serializer_class = UserSerializer
 
 
-class MyObtainTokenPairView(TokenObtainPairView):
-    permission_classes = (AllowAny,)
-    serializer_class = MyTokenObtainPairSerializer
-
-
-class LoginView(APIView):
-    def post(self,request):
-        username = request.data["username"]
-        password = request.data["password"]
-
-        user = User.objects.filter(username=username).first()
-
-        if user is None:
-            raise AuthenticationFailed("User Not Found")
-
-        if not user.check_password(password):
-            raise AuthenticationFailed("Incorrect Password!")
-
-        refresh = RefreshToken.for_user(User)
-        access = AccessToken.for_user(User)
-
-        return Response("Login Success Full",status=status.HTTP_200_OK)
-
-        # {
-        #     "username": "admin",
-        #     "password": "123"
-        # }
+class UserViewSet(viewsets.ModelViewSet):
+    # permission_classes = (IsAuthenticated,)
+    serializer_class = UserSerializer
+    queryset = get_user_model().objects.all()

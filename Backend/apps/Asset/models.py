@@ -1,5 +1,5 @@
 from django.db import models
-from apps.showroom.models import ShowroomDetail,ASM
+from apps.showroom.models import ShowroomDetail
 
 
 class Status(models.Model):
@@ -39,7 +39,7 @@ class LightManagement(models.Model):
     status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return "Name : {},  Status : {} ".format(self.name, self.status)
+        return "ID:{} ,Name : {},  Status : {} ".format(self.id, self.name, self.status)
 
     class Meta:
         db_table = "Light Management"
@@ -122,7 +122,7 @@ class ClassManagement(models.Model):
     status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return "Name : {},  Status : {} ".format(self.name, self.status)
+        return " ID :{} Name : {},  Status : {} ".format(self.id, self.name, self.status)
 
     class Meta:
         db_table = "Class Management"
