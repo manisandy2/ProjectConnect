@@ -8,7 +8,7 @@ class RSM(models.Model):
     name = models.CharField(max_length=120)
 
     def __str__(self):
-        return self.name
+        return "{}".format(self.name)
 
     class Meta:
         db_table = "RSM"
@@ -21,7 +21,7 @@ class ASM(models.Model):
     name = models.CharField(max_length=120)
 
     def __str__(self):
-        return self.name
+        return "{}".format(self.name)
 
     class Meta:
         db_table = "ASM"
@@ -33,7 +33,7 @@ class Manager(models.Model):
     name = models.CharField(max_length=120)
 
     def __str__(self):
-        return self.name
+        return "{}".format(self.name)
 
     class Meta:
         db_table = "Manager"
@@ -45,7 +45,7 @@ class Region(models.Model):
     name = models.CharField(max_length=120)
 
     def __str__(self):
-        return self.name
+        return "{}".format(self.name)
 
     class Meta:
         db_table = "Region"
@@ -57,7 +57,7 @@ class State(models.Model):
     name = models.CharField(max_length=120)
 
     def __str__(self):
-        return self.name
+        return "{}".format(self.name)
 
     class Meta:
         db_table = "State"
@@ -67,15 +67,15 @@ class State(models.Model):
 
 class ShowroomDetail(models.Model):
     name = models.CharField(max_length=120)
-    RSM = models.ForeignKey(to=RSM,null=True,blank=True,on_delete=models.SET_NULL)
-    ASM = models.ForeignKey(to=ASM, null=True,blank=True ,on_delete=models.SET_NULL)
-    Manager = models.ForeignKey(to=Manager, null=True,blank=True ,on_delete=models.SET_NULL)
-    CUG_NO = models.CharField(max_length=120,null=True,blank=True)
-    Landline = models.CharField(max_length=120,null=True,blank=True)
-    E_Mail = models.CharField(max_length=120,null=True,blank=True)
-    Region = models.ForeignKey(to=Region, null=True,blank=True,on_delete=models.SET_NULL)
-    State = models.ForeignKey(to=State, null=True,blank=True,on_delete=models.SET_NULL)
-    Address = models.CharField(max_length=120,null=True,blank=True)
+    RSM = models.ForeignKey(to=RSM, null=True, blank=True, on_delete=models.SET_NULL)
+    ASM = models.ForeignKey(to=ASM, null=True, blank=True,on_delete=models.SET_NULL)
+    Manager = models.ForeignKey(to=Manager, null=True,blank=True, on_delete=models.SET_NULL)
+    CUG_NO = models.CharField(max_length=120, null=True, blank=True)
+    Landline = models.CharField(max_length=120, null=True, blank=True)
+    E_Mail = models.CharField(max_length=120, null=True, blank=True)
+    Region = models.ForeignKey(to=Region, null=True, blank=True, on_delete=models.SET_NULL)
+    State = models.ForeignKey(to=State, null=True, blank=True, on_delete=models.SET_NULL)
+    Address = models.CharField(max_length=120, null=True, blank=True)
 
     def __str__(self):
         return "id :{} ,Name : {},  RSM : {}, ASM : {}," \
@@ -94,7 +94,7 @@ class Store(models.Model):
     name = models.CharField(max_length=120)
 
     def __str__(self):
-        return self.name
+        return "{}".format(self.name)
 
     class Meta:
         db_table = "Store"
