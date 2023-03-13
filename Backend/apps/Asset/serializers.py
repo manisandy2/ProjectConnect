@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import ClassManagement,LightManagement,AssetManagement,\
-    BrandManagement,BrandTypeManagement,VendorManagement,BrandLocation,MaterialManagement,Status
+    BrandManagement,BrandTypeManagement,VendorManagement,BrandLocation,MaterialManagement,Status,StatusManagement
 
 
 class SerializerStatus(serializers.ModelSerializer):
@@ -36,6 +36,32 @@ class SerializersPostClassManagement(serializers.ModelSerializer):
         # depth = 1
 
 
+########################################## *** Brand *** ##############################################################
+
+
+class SerializerListBrandManagement(serializers.ModelSerializer):
+    class Meta:
+        model = BrandManagement
+        fields = "__all__"
+        depth = 1
+
+
+class SerializerGetBrandManagement(serializers.ModelSerializer):
+    class Meta:
+        model = BrandManagement
+        fields = "__all__"
+        # depth = 1
+
+
+class SerializerPostBrandManagement(serializers.ModelSerializer):
+    class Meta:
+        model = BrandManagement
+        fields = "__all__"
+        # depth = 1
+
+
+
+
 
 class SerializersLightManagement(serializers.ModelSerializer):
     class Meta:
@@ -51,11 +77,6 @@ class SerializersAssetManagement(serializers.ModelSerializer):
         depth = 2
 
 
-class SerializerBrandManagement(serializers.ModelSerializer):
-    class Meta:
-        model = BrandManagement
-        fields = "__all__"
-        depth = 1
 
 
 class SerializerBrandTypeManagement(serializers.ModelSerializer):
@@ -85,4 +106,10 @@ class SerializerMaterialManagement(serializers.ModelSerializer):
         fields = "__all__"
         depth = 1
 
+
+class SerializerStatusManagement(serializers.ModelSerializer):
+    class Meta:
+        model = StatusManagement
+        fields = "__all__"
+        depth = 1
 

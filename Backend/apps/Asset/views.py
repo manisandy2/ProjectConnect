@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from .models import ClassManagement,LightManagement,AssetManagement,BrandManagement,BrandTypeManagement,\
-    VendorManagement,BrandLocation,MaterialManagement,Status
-from .serializers import SerializersGetClassManagement,SerializersPostClassManagement,SerializersLightManagement,\
-    SerializersAssetManagement,\
-    SerializerBrandManagement,SerializerBrandTypeManagement,SerializerVendorManagement,SerializerBrandLocation,\
-    SerializerMaterialManagement,SerializerStatus,SerializersListClassManagement
+    VendorManagement,BrandLocation,MaterialManagement,Status,StatusManagement
+from .serializers import SerializersGetClassManagement,SerializersPostClassManagement,SerializersListClassManagement,\
+    SerializerListBrandManagement,SerializerGetBrandManagement,SerializerPostBrandManagement,\
+    SerializersLightManagement,SerializersAssetManagement,SerializerBrandTypeManagement,SerializerVendorManagement,\
+    SerializerBrandLocation,SerializerMaterialManagement,SerializerStatus,SerializerStatusManagement
 
 
 from rest_framework import mixins
@@ -18,7 +18,6 @@ from rest_framework import generics
 
 
 class ClassList(mixins.ListModelMixin,
-                mixins.CreateModelMixin,
                 generics.GenericAPIView):
     queryset = ClassManagement.objects.all()
     serializer_class = SerializersListClassManagement
@@ -52,22 +51,9 @@ class ClassEdit(mixins.RetrieveModelMixin,
     def put(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)
 
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
 
-# class SnippetDetail(mixins.RetrieveModelMixin,
-#                     mixins.UpdateModelMixin,
-#                     mixins.DestroyModelMixin,
-#                     generics.GenericAPIView):
-#     queryset = Snippet.objects.all()
-#     serializer_class = SnippetSerializer
-#
-#     def get(self, request, *args, **kwargs):
-#         return self.retrieve(request, *args, **kwargs)
-#
-#     def put(self, request, *args, **kwargs):
-#         return self.update(request, *args, **kwargs)
-#
-#     def delete(self, request, *args, **kwargs):
-#         return self.destroy(request, *args, **kwargs)
 
 ########################################################################################################################
 
@@ -96,7 +82,7 @@ class AssetList(mixins.ListModelMixin,
 class BrandList(mixins.ListModelMixin,
                 generics.GenericAPIView):
     queryset = BrandManagement.objects.all()
-    serializer_class = SerializerBrandManagement
+    serializer_class = SerializerListBrandManagement
 
     def get(self,request,*args,**kwargs):
         return self.list(request,*args,**kwargs)
@@ -151,6 +137,15 @@ class StatusList(mixins.ListModelMixin,
                  generics.GenericAPIView):
     queryset = Status.objects.all()
     serializer_class = SerializerStatus
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+
+class StatusManagementList(mixins.ListModelMixin,
+                           generics.GenericAPIView):
+    queryset = StatusManagement.objects.all()
+    serializer_class = SerializerStatusManagement
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)

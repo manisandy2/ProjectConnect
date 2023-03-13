@@ -108,7 +108,7 @@ class BrandManagement(models.Model):
     status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return "Name : {},  Status : {} ".format(self.name, self.status)
+        return " ID :{}, Name : {},  Status : {} ".format(self.id, self.name, self.status)
 
     class Meta:
         db_table = "Brand Management"
@@ -122,7 +122,7 @@ class ClassManagement(models.Model):
     status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return " ID :{} Name : {},  Status : {} ".format(self.id, self.name, self.status)
+        return " ID :{}, Name : {},  Status : {} ".format(self.id, self.name, self.status)
 
     class Meta:
         db_table = "Class Management"
