@@ -1,10 +1,6 @@
 from django.shortcuts import render
-from .models import ClassManagement,LightManagement,AssetManagement,BrandManagement,BrandTypeManagement,\
-    VendorManagement,BrandLocation,MaterialManagement,Status,StatusManagement
-from .serializers import SerializersGetClassManagement,SerializersPostClassManagement,SerializersListClassManagement,\
-    SerializerListBrandManagement,SerializerGetBrandManagement,SerializerPostBrandManagement,\
-    SerializersLightManagement,SerializersAssetManagement,SerializerBrandTypeManagement,SerializerVendorManagement,\
-    SerializerBrandLocation,SerializerMaterialManagement,SerializerStatus,SerializerStatusManagement
+from .models import *
+from .serializers import *
 
 
 from rest_framework import mixins
@@ -37,7 +33,7 @@ class ClassPost(mixins.ListModelMixin,
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
-
+# ** Edit ** #
 class ClassEdit(mixins.RetrieveModelMixin,
                 mixins.UpdateModelMixin,
                 mixins.DestroyModelMixin,
@@ -55,7 +51,92 @@ class ClassEdit(mixins.RetrieveModelMixin,
         return self.destroy(request, *args, **kwargs)
 
 
-########################################################################################################################
+######################################## *** Brand *** ################################################################
+
+
+#* List *#
+
+class BrandList(mixins.ListModelMixin,
+                generics.GenericAPIView):
+    queryset = BrandManagement.objects.all()
+    serializer_class = SerializerListBrandManagement
+
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
+
+
+# ** POST ** #
+class BrandPost(mixins.ListModelMixin,
+                mixins.CreateModelMixin,
+                generics.GenericAPIView):
+    queryset = BrandManagement.objects.all()
+    serializer_class = SerializerPostBrandManagement
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+
+# ** Edit ** #
+class BrandEdit(mixins.RetrieveModelMixin,
+                mixins.UpdateModelMixin,
+                mixins.DestroyModelMixin,
+                generics.GenericAPIView):
+    queryset = BrandManagement.objects.all()
+    serializer_class = SerializerGetBrandManagement
+
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+
+
+######################################## *** Brand Location *** ################################################################
+
+
+# ** List **#
+class BrandLocationList(mixins.ListModelMixin,
+                        generics.GenericAPIView):
+    queryset = BrandLocation.objects.all()
+    serializer_class = SerializerListBrandLocation
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+
+# ** POST ** #
+class BrandLocationPost(mixins.ListModelMixin,
+                        mixins.CreateModelMixin,
+                        generics.GenericAPIView):
+    queryset = BrandLocation.objects.all()
+    serializer_class = SerializerPostBrandLocation
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+
+# ** Edit ** #
+class BrandLocationEdit(mixins.RetrieveModelMixin,
+                        mixins.UpdateModelMixin,
+                        mixins.DestroyModelMixin,
+                        generics.GenericAPIView):
+    queryset = BrandLocation.objects.all()
+    serializer_class = SerializerGetBrandLocation
+
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+
+
+
 
 class LightList(mixins.ListModelMixin,
                 generics.GenericAPIView):
@@ -79,13 +160,7 @@ class AssetList(mixins.ListModelMixin,
 
 ########################################################################################################################
 
-class BrandList(mixins.ListModelMixin,
-                generics.GenericAPIView):
-    queryset = BrandManagement.objects.all()
-    serializer_class = SerializerListBrandManagement
 
-    def get(self,request,*args,**kwargs):
-        return self.list(request,*args,**kwargs)
 
 
 ########################################################################################################################
@@ -112,13 +187,7 @@ class VendorList(mixins.ListModelMixin,
 ########################################################################################################################
 
 
-class BrandLocationList(mixins.ListModelMixin,
-                        generics.GenericAPIView):
-    queryset = BrandLocation.objects.all()
-    serializer_class = SerializerBrandLocation
 
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
 
 
 ########################################################################################################################
