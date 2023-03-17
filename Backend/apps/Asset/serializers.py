@@ -2,13 +2,15 @@ from rest_framework import serializers
 from .models import *
 
 
-class SerializerStatus(serializers.ModelSerializer):
+########################################## *** Status *** ##############################################################
+
+class SerializerListStatus(serializers.ModelSerializer):
     class Meta:
         model = Status
         fields = ["id","name"]
         # depth = 1
 
-########################################## *** Class *** ##############################################################
+########################################## *** Class Management *** ####################################################
 
 
 class SerializersListClassManagement(serializers.ModelSerializer):
@@ -35,7 +37,7 @@ class SerializersPostClassManagement(serializers.ModelSerializer):
         # depth = 1
 
 
-########################################## *** Brand *** ##############################################################
+########################################## *** Brand Management *** ####################################################
 
 
 class SerializerListBrandManagement(serializers.ModelSerializer):
@@ -61,6 +63,7 @@ class SerializerPostBrandManagement(serializers.ModelSerializer):
 
 ########################################## *** Brand Location *** ######################################################
 
+# Advertisement Location navbar name &  Brand Locations header name
 
 class SerializerListBrandLocation(serializers.ModelSerializer):
     class Meta:
@@ -83,12 +86,125 @@ class SerializerPostBrandLocation(serializers.ModelSerializer):
         # depth = 1
 
 
+########################################## *** Brand Type Management *** ###############################################
 
-class SerializersLightManagement(serializers.ModelSerializer):
+
+class SerializerListBrandTypeManagement(serializers.ModelSerializer):
+    class Meta:
+        model = BrandTypeManagement
+        fields = "__all__"
+        depth = 1
+
+
+class SerializerGetBrandTypeManagement(serializers.ModelSerializer):
+    class Meta:
+        model = BrandTypeManagement
+        fields = "__all__"
+        # depth = 1
+
+
+class SerializerPostBrandTypeManagement(serializers.ModelSerializer):
+    class Meta:
+        model = BrandTypeManagement
+        fields = "__all__"
+        # depth = 1
+
+
+########################################## *** Vendor Management *** ###################################################
+
+
+class SerializerListVendorManagement(serializers.ModelSerializer):
+    class Meta:
+        model = VendorManagement
+        fields = "__all__"
+        depth = 1
+
+
+class SerializerGetVendorManagement(serializers.ModelSerializer):
+    class Meta:
+        model = VendorManagement
+        fields = "__all__"
+        # depth = 1
+
+
+class SerializerPostVendorManagement(serializers.ModelSerializer):
+    class Meta:
+        model = VendorManagement
+        fields = "__all__"
+        # depth = 1
+
+
+########################################## *** Material Management *** #################################################
+
+
+class SerializerListMaterialManagement(serializers.ModelSerializer):
+    class Meta:
+        model = MaterialManagement
+        fields = "__all__"
+        depth = 1
+
+
+class SerializerGetMaterialManagement(serializers.ModelSerializer):
+    class Meta:
+        model = MaterialManagement
+        fields = "__all__"
+        # depth = 1
+
+
+class SerializerPostMaterialManagement(serializers.ModelSerializer):
+    class Meta:
+        model = MaterialManagement
+        fields = "__all__"
+        # depth = 1
+
+
+########################################## *** Light Type List*** ######################################################
+
+class SerializersListLightManagement(serializers.ModelSerializer):
     class Meta:
         model = LightManagement
         fields = ['id','name','status']
         depth = 1
+
+
+class SerializersGetLightManagement(serializers.ModelSerializer):
+    class Meta:
+        model = LightManagement
+        fields = ['id','name','status']
+        depth = 1
+
+
+class SerializersPostLightManagement(serializers.ModelSerializer):
+    class Meta:
+        model = LightManagement
+        fields = ['id','name','status']
+        depth = 1
+
+########################################## *** Status Management *** ###################################################
+
+
+class SerializerListStatusManagement(serializers.ModelSerializer):
+    class Meta:
+        model = StatusManagement
+        fields = "__all__"
+        depth = 1
+
+
+class SerializerGetStatusManagement(serializers.ModelSerializer):
+    class Meta:
+        model = StatusManagement
+        fields = "__all__"
+        depth = 1
+
+
+class SerializerPostStatusManagement(serializers.ModelSerializer):
+    class Meta:
+        model = StatusManagement
+        fields = "__all__"
+        depth = 1
+
+
+########################################## *** Asset Management *** ###################################################
 
 
 class SerializersAssetManagement(serializers.ModelSerializer):
@@ -96,37 +212,3 @@ class SerializersAssetManagement(serializers.ModelSerializer):
         model = AssetManagement
         fields = "__all__"
         depth = 2
-
-
-
-
-class SerializerBrandTypeManagement(serializers.ModelSerializer):
-    class Meta:
-        model = BrandTypeManagement
-        fields = "__all__"
-        depth = 1
-
-
-class SerializerVendorManagement(serializers.ModelSerializer):
-    class Meta:
-        model = VendorManagement
-        fields = "__all__"
-        depth = 1
-
-
-
-
-
-class SerializerMaterialManagement(serializers.ModelSerializer):
-    class Meta:
-        model = MaterialManagement
-        fields = "__all__"
-        depth = 1
-
-
-class SerializerStatusManagement(serializers.ModelSerializer):
-    class Meta:
-        model = StatusManagement
-        fields = "__all__"
-        depth = 1
-

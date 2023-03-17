@@ -6,7 +6,7 @@ class Status(models.Model):
     name = models.CharField(max_length=120)
 
     def __str__(self):
-        return "{}".format(self.name)
+        return " Id :{}, Name : {} ".format(self.id, self.name)
 
     class Meta:
         db_table = "Status"
@@ -14,12 +14,13 @@ class Status(models.Model):
 
 ########################################################################################################################
 
+
 class ClassManagement(models.Model):
     name = models.CharField(max_length=120)
     status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return " ID :{}, Name : {},  Status : {} ".format(self.id, self.name, self.status)
+        return " Id :{}, Name : {},  Status : {} ".format(self.id, self.name, self.status)
 
     class Meta:
         db_table = "Class Management"
@@ -33,7 +34,7 @@ class BrandManagement(models.Model):
     status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return " ID :{}, Name : {},  Status : {} ".format(self.id, self.name, self.status)
+        return " Id :{}, Name : {},  Status : {} ".format(self.id, self.name, self.status)
 
     class Meta:
         db_table = "Brand Management"
@@ -57,6 +58,63 @@ class BrandLocation(models.Model):
 ########################################################################################################################
 
 
+class BrandTypeManagement(models.Model):
+    name = models.CharField(max_length=120)
+    status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return "Id : {} ,Name : {},  Status : {} ".format(self.id, self.name, self.status)
+
+    class Meta:
+        db_table = "Brand Type Management"
+        verbose_name_plural = "Brand Type Management"
+
+########################################################################################################################
+
+
+class VendorManagement(models.Model):
+    name = models.CharField(max_length=120)
+    status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return "Id : {}, Name : {},  Status : {} ".format( self.id ,self.name, self.status)
+
+    class Meta:
+        db_table = "Vendor Management"
+        verbose_name_plural = "Vendor Management"
+
+########################################################################################################################
+
+
+class MaterialManagement(models.Model):
+    name = models.CharField(max_length=120)
+    status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return "Id: {}, Name : {},  Status : {} ".format(self.id, self.name, self.status)
+
+    class Meta:
+        db_table = "Material Management"
+        verbose_name_plural = "Material Management"
+
+########################################################################################################################
+
+
+class LightManagement(models.Model):
+    name = models.CharField(max_length=120)
+    status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return "Id: {} ,Name : {},  Status : {} ".format(self.id, self.name, self.status)
+
+    class Meta:
+        db_table = "Light Management"
+        verbose_name_plural = "Light Management"
+
+
+########################################################################################################################
+
+
 class StatusManagement(models.Model):
     Visibility = [
         ("Assets", "Assets"),
@@ -73,69 +131,6 @@ class StatusManagement(models.Model):
         db_table = "Status Management"
         verbose_name_plural = "Status Management"
 
-########################################################################################################################
-
-
-class LightManagement(models.Model):
-    name = models.CharField(max_length=120)
-    status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
-
-    def __str__(self):
-        return "ID:{} ,Name : {},  Status : {} ".format(self.id, self.name, self.status)
-
-    class Meta:
-        db_table = "Light Management"
-        verbose_name_plural = "Light Management"
-
-########################################################################################################################
-
-
-class MaterialManagement(models.Model):
-    name = models.CharField(max_length=120)
-    status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
-
-    def __str__(self):
-        return "S No : {}, Name : {},  Status : {} ".format(self.id, self.name, self.status)
-
-    class Meta:
-        db_table = "Material Management"
-        verbose_name_plural = "Material Management"
-
-########################################################################################################################
-
-
-
-
-########################################################################################################################
-
-
-class VendorManagement(models.Model):
-    name = models.CharField(max_length=120)
-    status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
-
-    def __str__(self):
-        return "Name : {},  Status : {} ".format(self.name, self.status)
-
-    class Meta:
-        db_table = "Vendor Management"
-        verbose_name_plural = "Vendor Management"
-
-########################################################################################################################
-
-
-class BrandTypeManagement(models.Model):
-    name = models.CharField(max_length=120)
-    status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
-
-    def __str__(self):
-        return "Name : {},  Status : {} ".format(self.name, self.status)
-
-    class Meta:
-        db_table = "Brand Type Management"
-        verbose_name_plural = "Brand Type Management"
-########################################################################################################################
-
-
 
 
 ########################################################################################################################
@@ -143,7 +138,13 @@ class BrandTypeManagement(models.Model):
 
 
 
+
+
+
+
+
 ########################################################################################################################
+
 
 
 class Grade(models.Model):
