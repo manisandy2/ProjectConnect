@@ -136,17 +136,6 @@ class StatusManagement(models.Model):
 ########################################################################################################################
 
 
-
-
-
-
-
-
-
-########################################################################################################################
-
-
-
 class Grade(models.Model):
     name = models.CharField(max_length=120)
     status = models.ForeignKey(to=Status, null=True, blank=True, on_delete=models.SET_NULL)
