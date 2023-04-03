@@ -4,6 +4,7 @@ from djoser.serializers import UserCreateSerializer
 from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
@@ -45,3 +46,8 @@ class LogInSerializer(TokenObtainPairSerializer):
 #         token['username'] = user.name
 #
 #         return token
+
+# class UserListSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = "__all__"

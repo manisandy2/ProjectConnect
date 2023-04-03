@@ -24,6 +24,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework_simplejwt.views import TokenObtainPairView
 
+
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -45,3 +46,7 @@ class LogIn(TokenObtainPairView,
     serializer_class = LogInSerializer
     queryset = get_user_model().objects.all()
 
+
+# class UserList(viewsets.ModelViewSet):
+#     serializer_class = UserSerializer
+#     queryset = User.objects.all()

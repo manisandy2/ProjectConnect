@@ -42,7 +42,8 @@ DJANGO_APPS = [
 LOCAL_APPS = [
     "apps.showroom",
     "apps.Asset",
-    "apps.users"
+    "apps.users",
+    "apps.Job_Assign"
 
 
 ]
